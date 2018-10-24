@@ -33,15 +33,14 @@ const (
     RBRACE      = "}"
 )
 
-var keywords = map[string]TokenType {
-    "fn":       FUNCTION,
-    "let":      LET,
-}
-
 func LookupIdent(ident string) TokenType {
-    if tok, ok := keywords[ident]; ok {
-        return tok
+    switch ident {
+    case "fn":
+        return FUNCTION
+    case "let":
+        return LET
+    default:
+        return IDENT
     }
-    return IDENT
 }
 
